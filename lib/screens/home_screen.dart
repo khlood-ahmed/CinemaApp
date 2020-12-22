@@ -1,6 +1,9 @@
 import 'package:ecommerce/screens/authentication_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ecommerce/models/movie.dart';
+import 'package:ecommerce/services/Store.dart';
 
 class Homescreen extends StatefulWidget {
   static const routeName = "/Home";
@@ -9,6 +12,7 @@ class Homescreen extends StatefulWidget {
 }
 
 class _Homescreen extends State<Homescreen> {
+  final _store = Store();
   int money = 180;
   final int totalmoney = 220;
 
@@ -51,21 +55,65 @@ class _Homescreen extends State<Homescreen> {
                   colors: <Color>[Colors.black, Colors.amber])),
         ),
       ),
-      body: ListView(
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Container(
-                margin: EdgeInsets.only(top: 10, left: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body: StreamBuilder<QuerySnapshot>(
+        stream: _store.loadMovies(),
+        builder:(context , snapshot)
+        {
+          if(snapshot.hasData){
+            List <Movie> movies =[];
+            for (var doc in snapshot.data.documents) {
+              var data = doc.data();
+              movies.add(Movie(
+                mTitle: data['MovieTitle'],
+                mDescription: data['MovieDescription'],
+                mImage: data['MovieImage'],
+                mTime: data['MovieTime'],
+                mNumberofseats: data['MovieNumberofseats'],
+              ));}
+            return GridView.builder(
+              gridDelegate:
+              SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,
+                childAspectRatio: .8,),
+              itemBuilder :(context,index)=> Padding(
+                padding:EdgeInsets.symmetric(horizontal : 10, vertical :10) ,
+                child: Stack(
+                  children: <Widget>[
+                    Positioned.fill(
+                      child: Image(
+                        fit: BoxFit.fill,
+                        image: AssetImage(movies[index].mImage),
+                      ),
+                    ),
+                    Positioned(
+                      bottom: 0,
+                      child: Opacity(
+                        opacity: .6,
+                        child: Container(
+                          width: MediaQuery.of(context).size.width,
+                          height: 60,
+                          color: Colors.white,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              Text(movies[index].mTitle,
+                                  style : TextStyle(fontWeight: FontWeight.bold)),
+                              Text(movies[index].mDescription,
+                                  style : TextStyle(fontWeight: FontWeight.bold)
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
                 ),
               ),
-            ],
-          )
-        ],
-      ),
+              itemCount: movies.length,);
+          }else{
+            return Center(child: Text('Loading....'));
+          }
+        },
+      )
     );
   }
 }
