@@ -14,6 +14,8 @@ class CienmaSeat extends StatefulWidget {
 }
 
 class _CienmaSeatState extends State<CienmaSeat> {
+   List <String> selected_seats = [];
+CienmaSeat s = CienmaSeat();
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -35,7 +37,32 @@ class _CienmaSeatState extends State<CienmaSeat> {
               border: !widget.isSelected && !widget.isReserved
                   ? Border.all(color: Colors.white, width: 1.0)
                   : null,
-              borderRadius: BorderRadius.circular(5.0))),
+              borderRadius: BorderRadius.circular(5.0)),
+             
+          void addseatnumber (String val){
+             if(selected_seats.isEmpty){
+             selected_seats.add(val);
+              }else {
+             for(int i = 0 ; i<selected_seats.length ; i++){
+          if(selected_seats[i] == val) {
+           print('selected seats = $selected_seats');
+           print('length = ${selected_seats.length}');
+          break;
+       } else{
+        selected_seats.add(val);
+        print('selected seats = $selected_seats');
+        print('length = ${selected_seats.length}');
+        break;
+         }
+        }
+       }
+
+
+
+      }
+
+       String get selectedSeatsAsString => selected_seats.join(', ');
+    ),
     );
 
   }
