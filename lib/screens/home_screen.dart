@@ -1,6 +1,7 @@
 import 'dart:ffi';
 import 'dart:typed_data';
 
+import 'package:ecommerce/screens/MovieDetails.dart';
 import 'package:ecommerce/screens/authentication_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -85,7 +86,10 @@ class _Homescreen extends State<Homescreen> {
                 padding:EdgeInsets.symmetric(horizontal : 30, vertical :30) ,
                 child: Stack(
                   children: <Widget>[
-                    RaisedButton(onPressed:() {
+                    RaisedButton(
+                      onPressed:(
+                      ){
+                 Navigator.pushNamed(context, MovieDetails.id , arguments: movies[index]);                  
                    Positioned.fill(
                      child: Image(
                        // ImageGridItem(index),

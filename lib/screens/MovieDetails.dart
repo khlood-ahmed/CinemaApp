@@ -11,7 +11,7 @@ class MovieDetails extends StatefulWidget {
 class _FilmeDetailsState extends State<MovieDetails> {
   @override
   Widget build(BuildContext context){
-    Movie movie = ModelRoute.of(context).settings.argument;
+    Movie movie = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       body : Stack(
         children: <Widget>[
@@ -54,21 +54,28 @@ class _FilmeDetailsState extends State<MovieDetails> {
                          Text(
                            movie.mTitle,
                            style: TextStyle(
-                             fontSize: 20, fontWeight: FontWeight.bold,
-                           ),
-
+                             fontSize: 20, fontWeight: FontWeight.bold),
                          ),
-
-                       ],
-                       
+                         SizedBox(height : 10),
+                         Text(
+                           movie.mDescription,
+                           style: TextStyle(
+                             fontSize: 16 ,fontWeight: FontWeight.w800,
+                             ),
+                         ),
+                         SizedBox(height : 10),
+                         Text(
+                           movie.mDescription,
+                           style: TextStyle(
+                             fontSize: 16 ,fontWeight: FontWeight.w800,
+                             ),
+                         ),
+                       ], 
                      ),
                    ),
                  ),
                  opacity: .5,
-
                ),
-                                 
-                 
                ],
 
              ),

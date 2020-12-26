@@ -38,7 +38,6 @@ class MyApp extends StatelessWidget {
           }),
       routes: {
         MovieDetails.id: (context) => MovieDetails(),
-
         Homescreen.routeName: (context) => Homescreen(),
         AuthenticationScreen.routeName: (context) => AuthenticationScreen(),
       },
