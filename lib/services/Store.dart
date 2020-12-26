@@ -2,8 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce/models/movie.dart';
 
 class Store{
-final Firestore _firestore = Firestore.instance;
-
+//final FiresbaseFirestore _firestore = Firestore.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 Stream<QuerySnapshot> loadMovies (){
   //List<Movie> movies = [];
 // await for( var snapshot in _firestore.collection('Movies').snapshots()){

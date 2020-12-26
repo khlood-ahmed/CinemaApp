@@ -1,9 +1,14 @@
+import 'dart:ffi';
+import 'dart:typed_data';
+
 import 'package:ecommerce/screens/authentication_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce/models/movie.dart';
 import 'package:ecommerce/services/Store.dart';
+import 'package:flutter/rendering.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 
 class Homescreen extends StatefulWidget {
   static const routeName = "/Home";
@@ -70,19 +75,25 @@ class _Homescreen extends State<Homescreen> {
                 mTime: data['MovieTime'],
                 mNumberofseats: data['MovieNumberofseats'],
               ));}
+
             return GridView.builder(
+           //   itemCount : 12,
               gridDelegate:
-              SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,
-                childAspectRatio: .8,),
+              SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1),
+                //childAspectRatio: .8),
               itemBuilder :(context,index)=> Padding(
-                padding:EdgeInsets.symmetric(horizontal : 10, vertical :10) ,
+                padding:EdgeInsets.symmetric(horizontal : 30, vertical :30) ,
                 child: Stack(
                   children: <Widget>[
-                    Positioned.fill(
-                      child: Image(
+                    RaisedButton(onPressed:() {
+                   Positioned.fill(
+                     child: Image(
+                       // ImageGridItem(index),
                         fit: BoxFit.fill,
-                        image: AssetImage(movies[index].mImage),
+                        image: NetworkImage(movies[index].mImage),
                       ),
+                   );
+                    }
                     ),
                     Positioned(
                       bottom: 0,
@@ -117,3 +128,39 @@ class _Homescreen extends State<Homescreen> {
     );
   }
 }
+/*class ImageGridItem extends StatefulWidget{
+  int _index;
+  ImageGridItem(int index){
+    this._index = index;
+  }
+@override
+_ImageGridItemState createState() => _ImageGridItemState();
+
+}
+class _ImageGridItemState extends State<ImageGridItem>{
+  Uint8List imageFile;
+  Reference photosReference  = FirebaseStorage.instance.ref().child("Uploads/");
+  getImage(){
+    int Max_Size = 7*1024*1024;
+    photosReference.child("image_${widget._index}.jpg").getData(Max_Size).then((data){
+      imageFile =data;
+    }).catchError((error){
+
+    });
+  }
+  Widget deciderGridTileWidget(){
+    if(imageFile == null){
+      Center (child: Text("No Data"));
+    }else{
+      return Image.memory(imageFile, fit: BoxFit.fill);
+    }
+    }
+  
+
+  @override
+  Widget build(BuildContext context) {
+    return GridTile(child: deciderGridTileWidget());
+    throw UnimplementedError();
+  }
+
+}*/
