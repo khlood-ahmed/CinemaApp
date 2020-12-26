@@ -1,6 +1,6 @@
 import 'package:ecommerce/screens/authentication_screen.dart';
 import 'package:ecommerce/screens/home_screen.dart';
-import 'package:ecommerce/screens/filme_details.dart';
+import 'package:ecommerce/screens/MovieDetails.dart';
 import 'package:ecommerce/screens/splash_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
             }
           }),
       routes: {
-          //      FilmeDetails.id: (context) => FilmeDetails(),
+        MovieDetails.id: (context) => MovieDetails(),
 
         Homescreen.routeName: (context) => Homescreen(),
         AuthenticationScreen.routeName: (context) => AuthenticationScreen(),
