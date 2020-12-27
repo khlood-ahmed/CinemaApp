@@ -9,6 +9,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce/models/movie.dart';
 import 'package:ecommerce/services/Store.dart';
 import 'package:flutter/rendering.dart';
+import 'package:ecommerce/screens/MovieDetails.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
 import '../constance.dart';
@@ -136,11 +137,13 @@ class _Homescreen extends State<Homescreen> {
                 child: Stack(
                   children: <Widget>[
                    Positioned.fill(
-                     child: Image(
-                       // ImageGridItem(index),
-                        fit: BoxFit.fill,
+                     child:RaisedButton(
+                       onPressed:(){Navigator.pushNamed(context, MovieDetails.id , arguments: movies[index]);} ,
+                    child:Image(
+                        fit: BoxFit.fitWidth,
                         image: NetworkImage(movies[index].mImage),
-                      ),
+                      )
+                     ),
                    ),
                     Positioned(
                       bottom: 0,
@@ -148,29 +151,21 @@ class _Homescreen extends State<Homescreen> {
                         opacity: .6,
                         child: Container(
                           width: MediaQuery.of(context).size.width,
-                          height: 60,
+                          height: 40,
                           color: Colors.white,
                           child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Text(movies[index].mTitle,
-                                  style : TextStyle(fontWeight: FontWeight.bold)),
-                              Text(movies[index].mDescription,
-                                  style : TextStyle(fontWeight: FontWeight.bold)
-                              )
+                                  style : TextStyle(fontWeight: FontWeight.bold,fontSize: 15)),
+                              //Text(movies[index].mDescription,
+                               //   style : TextStyle(fontWeight: FontWeight.bold)
+                             // )
                             ],
                           ),
                         ),
                       ),
                     ),
-           RaisedButton(
-        onPressed:(
-        ){
-                Navigator.pushNamed(context, MovieDetails.id , arguments: movies[index]);
-
-        },
-        ),
-
                   ],
                 ),
               ),
