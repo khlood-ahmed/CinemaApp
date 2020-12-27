@@ -1,5 +1,7 @@
 import 'package:ecommerce/models/movie.dart';
+import 'package:ecommerce/screens/by_ticket.dart';
 import 'package:flutter/material.dart';
+import 'package:ecommerce/screens/home_screen.dart';
 
 class MovieDetails extends StatefulWidget {
   static String id ='MovieDetails';
@@ -16,10 +18,11 @@ class _FilmeDetailsState extends State<MovieDetails> {
       body : Stack(
         children: <Widget>[
           Container(
-            height : MediaQuery.of(context).size.height,
+           //height : MediaQuery.of(context).size.height,
             width : MediaQuery.of(context).size.width,
           child :Image(
-            fit : BoxFit.fill,
+            fit : BoxFit.fitWidth,
+            height: 50,
             image: NetworkImage(movie.mImage),
              ),
           ),
@@ -70,6 +73,11 @@ class _FilmeDetailsState extends State<MovieDetails> {
                              fontSize: 16 ,fontWeight: FontWeight.w800,
                              ),
                          ),
+                         RaisedButton(
+                             onPressed:(){
+                             Navigator.pushNamed(context, BuyTicket.id , arguments: movie);
+                             }
+                         )
                        ], 
                      ),
                    ),

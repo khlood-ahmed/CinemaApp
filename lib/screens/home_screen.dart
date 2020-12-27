@@ -9,7 +9,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce/models/movie.dart';
 import 'package:ecommerce/services/Store.dart';
 import 'package:flutter/rendering.dart';
+import 'package:ecommerce/screens/MovieDetails.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+
+import '../constance.dart';
 
 class Homescreen extends StatefulWidget {
   static const routeName = "/Home";
@@ -75,6 +78,53 @@ class _Homescreen extends State<Homescreen> {
                 mImage: data['MovieImage'],
                 mTime: data['MovieTime'],
                 mNumberofseats: data['MovieNumberofseats'],
+                c1: data[c1],
+                c2: data['c2'],
+                c3: data['c3'],
+                c4: data['c4'],
+                c5: data['c5'],
+                c6: data['c6'],
+                c7: data['c7'],
+                c8: data['c8'],
+                c9: data['c9'],
+                c10: data['c10'],
+                c11: data['c11'],
+                c12: data['c12'],
+                c13: data['c13'],
+                c14: data['c14'],
+                c15: data['c15'],
+                c16: data['c16'],
+                c17: data['c17'],
+                c18: data['c18'],
+                c19: data['c19'],
+                c20: data['c20'],
+                c21: data['c21'],
+                c22: data['c22'],
+                c23: data['c23'],
+                c24: data['c24'],
+                c25: data['c25'],
+                c26: data['c26'],
+                c27: data['c27'],
+                c28: data['c28'],
+                c29: data['c29'],
+                c30: data['c30'],
+                c31: data['c31'],
+                c32: data['c32'],
+                c33: data['c33'],
+                c34: data['c34'],
+                c35: data['c35'],
+                c36: data['c36'],
+                c37: data['c37'],
+                c38: data['c38'],
+                c39: data['c39'],
+                c40: data['c40'],
+                c41: data['c41'],
+                c42: data['c42'],
+                c43: data['c43'],
+                c44: data['c44'],
+                c45: data['c45'],
+                c46: data['c46'],
+                c47: data['c47'],
               ));}
 
             return GridView.builder(
@@ -86,19 +136,13 @@ class _Homescreen extends State<Homescreen> {
                 padding:EdgeInsets.symmetric(horizontal : 30, vertical :30) ,
                 child: Stack(
                   children: <Widget>[
-                    RaisedButton(
-                      onPressed:(
-                      ){
-                 Navigator.pushNamed(context, MovieDetails.id , arguments: movies[index]);                  
                    Positioned.fill(
                      child: Image(
                        // ImageGridItem(index),
                         fit: BoxFit.fill,
                         image: NetworkImage(movies[index].mImage),
                       ),
-                   );
-                    }
-                    ),
+                   ),
                     Positioned(
                       bottom: 0,
                       child: Opacity(
@@ -119,7 +163,14 @@ class _Homescreen extends State<Homescreen> {
                           ),
                         ),
                       ),
-                    )
+                    ),
+           RaisedButton(
+        onPressed:(
+        ){
+        Navigator.pushNamed(context, MovieDetails.id , arguments: movies[index]);
+        }
+        )
+
                   ],
                 ),
               ),
@@ -129,6 +180,7 @@ class _Homescreen extends State<Homescreen> {
           }
         },
       )
+
     );
   }
 }

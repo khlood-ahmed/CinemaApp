@@ -1,13 +1,17 @@
+import 'package:ecommerce/models/movie.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerce/widets/Cienma_Seat.dart';
 import '../constance.dart';
+import 'package:ecommerce/screens/home_screen.dart';
 
 class BuyTicket extends StatelessWidget {
+  static String id ='BuyTicket';
  // var title;
 
  // BuyTicket(this.title);
   @override
   Widget build(BuildContext context) {
+    Movie movie = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       backgroundColor: kBackgroundColor,
       body: SafeArea(
@@ -174,19 +178,52 @@ class BuyTicket extends StatelessWidget {
                       SizedBox(
                         width: (MediaQuery.of(context).size.width / 20),
                       ),
-                      CienmaSeat(val :'1'),
-                      CienmaSeat(val:'2'),
-                      CienmaSeat(val:'3'),
-                      CienmaSeat(val:'4'),
+                      CienmaSeat(
+                        isReserved: movie.c1 ,
+                        isSelected: false,
+                        val: 'c1',
+                      ),
+                      CienmaSeat(
+                        isReserved: movie.c2 ,
+                        isSelected: false,
+                        val: 'c2',),
+                      CienmaSeat(
+                        isReserved: movie.c3 ,
+                        isSelected: false,
+                        val: 'c3',
+                      ),
+                      CienmaSeat(
+                        isReserved: movie.c4 ,
+                        isSelected: false,
+                        val: 'c4',
+                      ),
 
                       SizedBox(
                         width: (MediaQuery.of(context).size.width / 20) * 2,
                       ),
-                      CienmaSeat(val:'5'),
-                      CienmaSeat(val:'6'),
-                      CienmaSeat(val:'7'),
-                      CienmaSeat(val:'8'),
-                      CienmaSeat(val:'9'),
+                      CienmaSeat(
+                        isReserved: movie.c5 ,
+                        isSelected: false,
+                        val: 'c5',
+                      ),
+                      CienmaSeat(
+                        isReserved: movie.c6 ,
+                        isSelected: false,
+                        val: 'c6',
+                      ),
+                      CienmaSeat(
+                        isReserved: movie.c7 ,
+                        isSelected: false,
+                        val: 'c7',
+                      ),
+                      CienmaSeat(
+                          isReserved: movie.c8 ,
+                          isSelected: false,
+                          val:'8'),
+                      CienmaSeat(
+                          isReserved: movie.c9,
+                          isSelected: false,
+                          val:'9'),
                       SizedBox(
                         width: (MediaQuery.of(context).size.width / 20),
                       ),
@@ -196,36 +233,90 @@ class BuyTicket extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      CienmaSeat(val:'10'),
-                      CienmaSeat(val:'11'),
-                      CienmaSeat(val:'12'),
-                      CienmaSeat(val:'13'),
+                      CienmaSeat(
+                          isReserved: movie.c10 ,
+                          isSelected: false,
+                          val:'10'),
+                      CienmaSeat(
+                          isReserved: movie.c11 ,
+                          isSelected: false,
+                          val:'11'),
+                      CienmaSeat(
+                          isReserved: movie.c12 ,
+                          isSelected: false,
+                          val:'12'),
+                      CienmaSeat(
+                          isReserved: movie.c13 ,
+                          isSelected: false,
+                          val:'13'),
                       SizedBox(
                         width: (MediaQuery.of(context).size.width / 20) * 2,
                       ),
-                      CienmaSeat(val:'14'),
-                      CienmaSeat(val:'15'),
-                      CienmaSeat(val:'16'),
-                      CienmaSeat(val:'17'),
-                      CienmaSeat(val:'18'),
+                      CienmaSeat(
+                          isReserved: movie.c14 ,
+                          isSelected: false,
+                          val:'14'),
+                      CienmaSeat(
+                          isReserved: movie.c15 ,
+                          isSelected: false,
+                          val:'15'),
+                      CienmaSeat(
+                          isReserved: movie.c16,
+                          isSelected: false,
+                          val:'16'),
+                      CienmaSeat(
+                          isReserved: movie.c17,
+                          isSelected: false,
+                          val:'17'),
+                      CienmaSeat(
+                          isReserved: movie.c18,
+                          isSelected: false,
+                          val:'18'),
                     ],
                   ),
                   // Third  Row
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      CienmaSeat(val:'19'),
-                      CienmaSeat(val:'20'),
-                      CienmaSeat(val:'21'),
-                      CienmaSeat(val:'22'),
+                      CienmaSeat(
+                          isReserved: movie.c19 ,
+                          isSelected: false,
+                          val:'19'),
+                      CienmaSeat(
+                          isReserved: movie.c20 ,
+                          isSelected: false,
+                          val:'20'),
+                      CienmaSeat(
+                          isReserved: movie.c21,
+                          isSelected: false,
+                          val:'21'),
+                      CienmaSeat(
+                          isReserved: movie.c22,
+                          isSelected: false,
+                          val:'22'),
                       SizedBox(
                         width: (MediaQuery.of(context).size.width / 20) * 2,
                       ),
-                      CienmaSeat(val:'23'),
-                      CienmaSeat( val:'24'  ),
-                      CienmaSeat(val:'25'),
-                      CienmaSeat(val:'26'),
-                      CienmaSeat(val:'27'),
+                      CienmaSeat(
+                          isReserved: movie.c23,
+                          isSelected: false,
+                          val:'23'),
+                      CienmaSeat(
+                          isReserved: movie.c24,
+                          isSelected: false,
+                          val:'24'  ),
+                      CienmaSeat(
+                          isReserved: movie.c25,
+                          isSelected: false,
+                          val:'25'),
+                      CienmaSeat(
+                          isReserved: movie.c26,
+                          isSelected: false,
+                          val:'26'),
+                      CienmaSeat(
+                          isReserved: movie.c27,
+                          isSelected: false,
+                          val:'27'),
 
                     ],
                   ),
@@ -233,18 +324,45 @@ class BuyTicket extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      CienmaSeat(val:'28'),
-                      CienmaSeat(val:'29'),
-                      CienmaSeat(val:'30'),
-                      CienmaSeat(val:'31'),
+                      CienmaSeat(
+                          isReserved: movie.c28,
+                          isSelected: false,
+                          val:'28'),
+                      CienmaSeat(
+                          isReserved: movie.c29,
+                          isSelected: false,
+                          val:'29'),
+                      CienmaSeat(
+                          isReserved: movie.c30,
+                          isSelected: false,
+                          val:'30'),
+                      CienmaSeat(
+                          isReserved: movie.c31,
+                          isSelected: false,
+                          val:'31'),
                       SizedBox(
                         width: (MediaQuery.of(context).size.width / 20) * 2,
                       ),
-                      CienmaSeat(val:'32'),
-                      CienmaSeat(val:'33'),
-                      CienmaSeat(val:'34'),
-                      CienmaSeat(val:'35'),
-                      CienmaSeat(val:'36'),
+                      CienmaSeat(
+                          isReserved: movie.c32,
+                          isSelected: false,
+                          val:'32'),
+                      CienmaSeat(
+                          isReserved: movie.c33,
+                          isSelected: false,
+                          val:'33'),
+                      CienmaSeat(
+                          isReserved: movie.c34,
+                          isSelected: false,
+                          val:'34'),
+                      CienmaSeat(
+                          isReserved: movie.c35,
+                          isSelected: false,
+                          val:'35'),
+                      CienmaSeat(
+                          isReserved: movie.c36,
+                          isSelected: false,
+                          val:'36'),
 
                     ],
                   ),
@@ -258,20 +376,53 @@ class BuyTicket extends StatelessWidget {
                       SizedBox(
                         width: (MediaQuery.of(context).size.width / 20),
                       ),
-                      CienmaSeat(val:'37'),
-                      CienmaSeat(val:'38'),
-                      CienmaSeat(val:'39'),
-                      CienmaSeat(val:'40'),
-                      CienmaSeat(val:'41'),
+                      CienmaSeat(
+                          isReserved: movie.c37,
+                          isSelected: false,
+                          val:'37'),
+                      CienmaSeat(
+                          isReserved: movie.c38,
+                          isSelected: false,
+                          val:'38'),
+                      CienmaSeat(
+                          isReserved: movie.c39,
+                          isSelected: false,
+                          val:'39'),
+                      CienmaSeat(
+                          isReserved: movie.c40,
+                          isSelected: false,
+                          val:'40'),
+                      CienmaSeat(
+                          isReserved: movie.c41,
+                          isSelected: false,
+                          val:'41'),
 
                       SizedBox(
                       ),
-                      CienmaSeat(val:'42'),
-                      CienmaSeat(val:'43'),
-                      CienmaSeat(val:'44'),
-                      CienmaSeat(val:'45'),
-                      CienmaSeat(val:'46'),
-                      CienmaSeat(val:'47'),
+                      CienmaSeat(
+                          isReserved: movie.c44,
+                          isSelected: false,
+                          val:'42'),
+                      CienmaSeat(
+                          isReserved: movie.c43,
+                          isSelected: false,
+                          val:'43'),
+                      CienmaSeat(
+                          isReserved: movie.c44,
+                          isSelected: false,
+                          val:'44'),
+                      CienmaSeat(
+                          isReserved: movie.c45,
+                          isSelected: false,
+                          val:'45'),
+                      CienmaSeat(
+                          isReserved: movie.c46,
+                          isSelected: false,
+                          val:'46'),
+                      CienmaSeat(
+                          isReserved: movie.c47,
+                          isSelected: false,
+                          val:'47'),
 
                       SizedBox(
                         width: (MediaQuery.of(context).size.width / 20),
