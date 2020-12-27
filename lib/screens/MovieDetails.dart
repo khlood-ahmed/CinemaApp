@@ -18,18 +18,18 @@ class _FilmeDetailsState extends State<MovieDetails> {
       body : Stack(
         children: <Widget>[
           Container(
-           //height : MediaQuery.of(context).size.height,
-            width : MediaQuery.of(context).size.width,
+          /* height : MediaQuery.of(context).size.height,*/
+         width : MediaQuery.of(context).size.width,
           child :Image(
-            fit : BoxFit.fitWidth,
-            height: 50,
+           fit : BoxFit.fitWidth,
+            height: 500,
             image: NetworkImage(movie.mImage),
              ),
           ),
            Padding(
-             padding: EdgeInsets.fromLTRB(20, 30, 20, 0),
+            padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
              child: Container(
-               height: MediaQuery.of(context).size.height * .1,
+               height: MediaQuery.of(context).size.height,
                child: Row(
                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                  children: <Widget>[
@@ -46,9 +46,9 @@ class _FilmeDetailsState extends State<MovieDetails> {
                children: <Widget>[
                Opacity(
                  child: Container(
-                   color : Colors.white,
-                   width : MediaQuery.of(context).size.width,
-                   height: MediaQuery.of(context).size.height*3,
+                   color : Colors.blue[100],
+                  /* width : MediaQuery.of(context).size.width,
+                   height: MediaQuery.of(context).size.height,*/
                    child: Padding(
                      padding: const EdgeInsets.all(20),
                      child: Column(
@@ -68,15 +68,19 @@ class _FilmeDetailsState extends State<MovieDetails> {
                          ),
                          SizedBox(height : 10),
                          Text(
-                           movie.mDescription,
+                           movie.mTime,
                            style: TextStyle(
                              fontSize: 16 ,fontWeight: FontWeight.w800,
                              ),
                          ),
                          RaisedButton(
+                           child : Text("Book Seats"),
+                           color: Colors.black,
+                           textColor: Colors.white,
                              onPressed:(){
                              Navigator.pushNamed(context, BuyTicket.id , arguments: movie);
                              }
+                            
                          )
                        ], 
                      ),

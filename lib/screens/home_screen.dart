@@ -9,7 +9,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce/models/movie.dart';
 import 'package:ecommerce/services/Store.dart';
 import 'package:flutter/rendering.dart';
-import 'package:ecommerce/screens/MovieDetails.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
 import '../constance.dart';
@@ -167,9 +166,10 @@ class _Homescreen extends State<Homescreen> {
            RaisedButton(
         onPressed:(
         ){
-        Navigator.pushNamed(context, MovieDetails.id , arguments: movies[index]);
-        }
-        )
+                Navigator.pushNamed(context, MovieDetails.id , arguments: movies[index]);
+
+        },
+        ),
 
                   ],
                 ),
