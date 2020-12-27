@@ -46,7 +46,7 @@ class _FilmeDetailsState extends State<MovieDetails> {
                children: <Widget>[
                Opacity(
                  child: Container(
-                   color : Colors.blue[100],
+                   color : Colors.white30,
                   /* width : MediaQuery.of(context).size.width,
                    height: MediaQuery.of(context).size.height,*/
                    child: Padding(
@@ -63,7 +63,7 @@ class _FilmeDetailsState extends State<MovieDetails> {
                          Text(
                            movie.mDescription,
                            style: TextStyle(
-                             fontSize: 16 ,fontWeight: FontWeight.w800,
+                             fontSize: 15 ,fontWeight: FontWeight.w800,
                              ),
                          ),
                          SizedBox(height : 10),
