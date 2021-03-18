@@ -10,6 +10,10 @@ Stream<QuerySnapshot> loadMovies (){
   return _firestore.collection('Movies').snapshots();
   
   }
+  updatemovies(data, documentID) {
+    _firestore.collection('Movies').document(documentID).updateData(
+        data);
+  }
  }
  //return movies;
 //}

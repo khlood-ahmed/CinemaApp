@@ -73,12 +73,13 @@ class _Homescreen extends State<Homescreen> {
             for (var doc in snapshot.data.documents) {
               var data = doc.data();
               movies.add(Movie(
+                documentid : doc.id,
                 mTitle: data['MovieTitle'],
                 mDescription: data['MovieDescription'],
                 mImage: data['MovieImage'],
                 mTime: data['MovieTime'],
                 mNumberofseats: data['MovieNumberofseats'],
-                c1: data[c1],
+                c1: data['c1'],
                 c2: data['c2'],
                 c3: data['c3'],
                 c4: data['c4'],
@@ -128,6 +129,7 @@ class _Homescreen extends State<Homescreen> {
               ));}
 
             return GridView.builder(
+              itemCount: movies.length,
            //   itemCount : 12,
               gridDelegate:
               SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1),
@@ -169,7 +171,7 @@ class _Homescreen extends State<Homescreen> {
                   ],
                 ),
               ),
-              itemCount: movies.length,);
+              );
           }else{
             return Center(child: Text('Loading....'));
           }

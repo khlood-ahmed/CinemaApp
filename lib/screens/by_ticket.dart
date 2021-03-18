@@ -1,10 +1,15 @@
 import 'package:ecommerce/models/movie.dart';
+import 'package:ecommerce/services/Store.dart';
+import 'package:ecommerce/widets/Function.dart';
+import 'package:ecommerce/widets/Roundedbuttons.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerce/widets/Cienma_Seat.dart';
 import '../constance.dart';
 import 'package:ecommerce/screens/home_screen.dart';
 
 class BuyTicket extends StatelessWidget {
+  final GlobalKey<FormState> _globalkey = GlobalKey<FormState>();
+  final _store = Store();
   static String id ='BuyTicket';
  // var title;
 
@@ -13,9 +18,13 @@ class BuyTicket extends StatelessWidget {
   Widget build(BuildContext context) {
     Movie movie = ModalRoute.of(context).settings.arguments;
     return Scaffold(
+
       backgroundColor: kBackgroundColor,
-      body: SafeArea(
-        child: Column(
+      body: Form(
+        key: _globalkey,
+        child: Padding(
+        padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+          child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
             Padding(
@@ -23,6 +32,7 @@ class BuyTicket extends StatelessWidget {
               child: Row(
                 children: <Widget>[
                   Container(
+
                     width: MediaQuery.of(context).size.width * .12,
                     height: MediaQuery.of(context).size.width * .12,
                     decoration: kRoundedFadedBorder,
@@ -51,6 +61,7 @@ class BuyTicket extends StatelessWidget {
               ),
             ),
             Container(
+
               margin: EdgeInsets.symmetric(vertical: 10.0),
               width: MediaQuery.of(context).size.width * .9,
               decoration: BoxDecoration(
@@ -139,20 +150,20 @@ class BuyTicket extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text('Star Cineplex Bangladesh', style: kMainTextStyle),
-                      Text('panthapath , 1205 Dhaka, Bangladesh',
-                          style:
-                              TextStyle(color: Colors.white30, fontSize: 18.0)),
+                      Text('Cinema Seats', style: kMainTextStyle),
+                     // Text('panthapath , 1205 Dhaka, Bangladesh',
+                        //  style:
+                          //    TextStyle(color: Colors.white30, fontSize: 18.0)),
                       SizedBox(height: 10.0),
                       Row(
                         children: <Widget>[
                           Text('2D', style: kMainTextStyle),
                           SizedBox(width: 10.0),
-                          Text('3D',
-                              style: TextStyle(
-                                  color: Colors.white30,
-                                  fontSize: 18.0,
-                                  fontWeight: FontWeight.bold)),
+                          // Text('3D',
+                              //style: TextStyle(
+                                 // color: Colors.white30,
+                                //  fontSize: 18.0,
+                              //    fontWeight: FontWeight.bold)),
                         ],
                       )
                     ],
@@ -168,7 +179,7 @@ class BuyTicket extends StatelessWidget {
             ),
             Center(child: Image.asset('assets/images/screen.png')),
             Padding(
-              padding: EdgeInsets.all(5.0),
+              padding: EdgeInsets.all(0),
               child: Column(
                 children: <Widget>[
                   // First Seat Row
@@ -433,29 +444,44 @@ class BuyTicket extends StatelessWidget {
               ),
             ),
             Expanded(
-                          child: Row(
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.only(left: 25.0),
-                    child: Text(
-                      '30\$',
-                      style: TextStyle(
-                          fontSize: 30.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
-                    ),
-                  ),
-                  Container(
-          padding: EdgeInsets.symmetric(horizontal:40.0 , vertical:10.0),
-          decoration: BoxDecoration(color:  kActionColor , borderRadius: BorderRadius.only(topLeft: Radius.circular(25.0))),
-          child: InkWell(child: Text('Pay' , style: TextStyle(color: Colors.white ,fontSize: 25.0 , fontWeight:FontWeight.bold))),
-        )
+              Builder(
+              builder: (context)=> Roundedbuttons(
+              title: 'Book',
+              coluer: Colors.deepPurple,
+              onPressed: () async {
+                try {
+                  if (_globalkey.currentState.validate()) {
+                    _globalkey.currentState.save();
+                    for(int i=0 ; i<selected_seats.length ; i++){
+                      _store.updatemovies(
+                          ({
+                            selected_seats[i] : true,
+                          }),
+                          movie.documentid);
+                      Scaffold.of(context).showSnackBar(SnackBar(
+                        content: Text('succefully booked', style: TextStyle(color: Colors.white),),
+                      ));
+                      Navigator.pushNamed(context, Homescreen.routeName);
+                    }
+                  }
+
+                } catch(es){
+                            Scaffold.of(context).showSnackBar(SnackBar(
+                              content: Text(es.message),
+                            ));
+                          }},
+                        //child:Text('Pay' , style: TextStyle(color: Colors.white ,fontSize: 25.0 , fontWeight:FontWeight.bold)) ,
+                      )),
+                        //child: Text('Pay' , style: TextStyle(color: Colors.white ,fontSize: 25.0 , fontWeight:FontWeight.bold)))
                 ],
               ),
             )
           ],
         ),
+      ),
       ),
     );
   }

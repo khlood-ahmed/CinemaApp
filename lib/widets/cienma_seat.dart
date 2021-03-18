@@ -26,7 +26,7 @@ CienmaSeat s = CienmaSeat();
         onTap: () {
           setState(() {
             !widget.isReserved ? widget.isSelected = !widget.isSelected : null;
-            widget.isSelected == true ? addseatnumber(s.val) : null;
+            widget.isSelected == true ? addseatnumber(widget.val) : null;
           });
         },
         child: Container(
@@ -34,7 +34,7 @@ CienmaSeat s = CienmaSeat();
             width: MediaQuery.of(context).size.width / 15,
             height: MediaQuery.of(context).size.width / 15,
             decoration: BoxDecoration(
-                color: widget.isReserved? Colors.black : widget.isSelected ? Colors.pink : null,
+                color: widget.isReserved? Colors.white : widget.isSelected ? Colors.pink : null,
                 border: !widget.isSelected && !widget.isReserved ? Border.all(color: Colors.white, width: 1.0) : null, borderRadius: BorderRadius.circular(5.0)),
 
 
